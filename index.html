@@ -18,24 +18,107 @@
 
     <!-- include our JS+JSX for the React Appliccation -->
 <script type="text/babel">
+    class Game extends React.Component{
+      constructor(props){
+     super(props);
+       
+      }
+     render(){
+       return(
+       <div className="GameDiv">
+        <h1>WELCOME TO {this.props.venue}</h1>
+        </div>
+       )
+     }
+    }
+
+    class Team extends React.Component {
+      constructor(props){
+        super(props);
+      this.state ={
+        shotsTaken: 0,
+        score: 0
+      }}
+      shoot = () => {
+        let score = this.state.score;
+        
+        if (this.state.shotsTaken >0) {
+          let Percentage =this.state.score/this.state.shotsTaken
+          render()
+          {
+            return(
+              <div className="PercentageDiv">
+              Shot Percentage: {this.Percentage}%
+              </div>)
+          }
+        }
+      
+      
+                  if ((Math.random() * 100) + 1 >50) {
+                  score = this.state.score + 1 
+                  }
+              this.setState((state, props) => ({
+              shotsTaken : state.shotsTaken + 1,
+               score
+              }))}
+
+      render () {
+        return(
+        <div className="TeamDiv">
+          <img height='200px' width='200px' src={this.props.img}/>
+          
+          <h1>{ this.props.name}</h1>
+          <div>
+           
+            </div>
+        <button onClick={this.shoot}>Shoot Button</button>
+  
+        <div>Shots fired:{this.state.shotsTaken}
+        Score: {this.state.score}
+        </div>
+    </div>
+    )
+  }
+  }
+ 
+
 
 // An App component under which all other components will be added
 function App (props) {
   return (
-    <div>
-      <h1>Welcome to the Sports Game starter!</h1>
-      <em>This file represents the way your code should look after completing the <strong>Setup</strong> steps in the instructions.</em>
-    </div>
-  )
+    <div className="App">
+      <Game 
+      venue="RAINBOW CASTLE" 
+      />
+      <div className="App" >
+    <Team 
+    name="Dodgers" 
+    img="./Dodgers.jpg" score="0"
+    />
+    <div className="App">
+    <Team 
+    name="Spurs" 
+    img="./spurs.png" score="0"
+    />
+
+      </div>
+      </div>
+      </div>
+  )  
 }
+
+                  
+
+
+
+
 
 
 
 // Render the App
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-)
+
+ReactDOM.render( <App  />,
+  document.getElementById('root'));
 </script>
 </body>
 </html>
