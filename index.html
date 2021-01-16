@@ -43,6 +43,8 @@
         }
       }
       shoot = () => {
+        var shootSound = new Audio('./Swish+2.wav');
+        shootSound.play();
         let score = this.state.score;
         let Percentage = this.state.score / this.state.shotsTaken
 
@@ -50,6 +52,8 @@
 
 
         if ((Math.random() * 100) + 1 > 50) {
+          var scoreSound = new Audio('./cheer.wav');
+        scoreSound.play();
           score = this.state.score + 1
         }
         this.setState((state, props) => ({
