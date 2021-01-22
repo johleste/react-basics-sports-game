@@ -46,33 +46,26 @@
         var shootSound = new Audio('./Swish+2.wav');
         shootSound.play();
         let score = this.state.score;
-        let Percentage = this.state.score / this.state.shotsTaken
+        let Percentage = (this.state.score / this.state.shotsTaken)
+        // if (this.state.shotsTaken > 0) {
 
-
-
-
+        //   <div className="PercentageDiv">
+        //     Shot Percentage: {this.state.Percentage}%
+        //     </div>
+        // } 
         if ((Math.random() * 100) + 1 > 50) {
           var scoreSound = new Audio('./cheer.wav');
-        scoreSound.play();
+          scoreSound.play();
           score = this.state.score + 1
         }
         this.setState((state, props) => ({
           shotsTaken: state.shotsTaken + 1,
           score
         }
+
         )
         )
       }
-        render(){
-          return (
-            <div className="PercentageDiv">
-              Shot Percentage: {this.Percentage}%
-            </div>
-
-          )
-        }
-      
-    
       render() {
         return (
           <div className="TeamDiv">
@@ -86,7 +79,6 @@
 
             <div>Shots fired:{this.state.shotsTaken}
         Score: {this.state.score}
-
             </div>
           </div>
         )
